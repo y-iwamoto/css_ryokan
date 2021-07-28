@@ -1,0 +1,81 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4D0000 0% 0% no-repeat padding-box;
+    height: 94px;
+    width: 100%;
+    position: fixed;/*fixedを設定して固定*/
+    z-index: 999;/*最前面へ*/
+    top:0;/*位置指定*/
+}
+.header-logo {
+    margin-left: 30px;
+}
+.header-nav {
+    margin-left: auto;
+    margin-right: 33px;
+}
+.nav-list {
+    display: flex;
+}
+.nav-item:nth-child(n+1) {
+    margin-left: 25px;
+}
+.header-nav-sp {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .header-nav {
+        display: none;
+    }
+    .header {
+        justify-content: space-between;
+    }
+    .header-nav-sp {
+        position: relative;/*ボタン内側の基点となるためrelativeを指定*/
+        cursor: pointer;
+        width: 52px;
+        height:50px;
+        display: block;
+        margin-right: 30px;
+    }
+
+    .header-nav-sp span {
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 14px;
+        height: 3px;
+        border-radius: 3px;
+        background: #fff;
+        width: 52px;
+    }
+    .header-nav-sp span:nth-of-type(1) {
+        top: 10px;
+    }
+    .header-nav-sp span:nth-of-type(2) {
+        top: 25px;
+    }
+    .header-nav-sp span:nth-of-type(3) {
+        top: 40px;
+    }
+
+    /*activeクラスが付与されると線が回転して×に*/
+    .header-nav-sp.active span:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 52px;
+    }
+    .header-nav-sp.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    .header-nav-sp.active span:nth-of-type(3) {
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 52px;
+    }
+}

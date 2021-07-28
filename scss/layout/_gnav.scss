@@ -1,0 +1,83 @@
+#g-nav{
+    display: none;
+}
+@media screen and (max-width: 767px) {
+    #g-nav{
+        display: block;
+        /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+        position:fixed;
+        z-index: 999;
+        /*ナビのスタート位置と形状*/
+        top:-120%;
+        left:0;
+        width:100%;
+        height: 40vh;/*ナビの高さ*/
+        background: cl(black) 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 0.8;
+        /*動き*/
+        transition: all 0.1ms;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    /*アクティブクラスがついたら位置を0に*/
+    #g-nav.panelactive{
+        top: 11%;
+    }
+    
+    /*ナビゲーションの縦スクロール*/
+    #g-nav.panelactive #g-nav-list{
+        /*ナビの数が増えた場合縦スクロール*/
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 40vh;/*表示する高さ*/
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /*ナビゲーション*/
+    #g-nav ul {
+        /*ナビゲーション天地中央揃え*/
+        position: absolute;
+        z-index: 999;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+    
+    /*リストのレイアウト設定*/
+    
+    #g-nav li{
+        list-style: none;
+        text-align: center;
+    }
+    #g-nav li:nth-child(n+1) {
+        padding-top: 20px;
+    }
+    
+    #g-nav li a{
+      color: cl(white);
+      text-decoration: none;
+      display: block;
+      font-size: 26px;
+    }
+    @media screen and (max-height: 700px) {
+        #g-nav.panelactive{
+            top: 14%;
+        }
+        #g-nav li a{
+            font-size: 24px;
+        }
+    }
+    @media screen and (max-height: 600px) {
+        #g-nav.panelactive{
+            top: 16%;
+        }
+        #g-nav li a{
+            font-size: 18px;
+        }
+    }
+
+}
